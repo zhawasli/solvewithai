@@ -1,3 +1,5 @@
+console.log("BOOT: starting server.js");
+
 // ===== IMPORTS =====
 require("dotenv").config();
 
@@ -66,6 +68,7 @@ Problem: ${question}
 
 // ===== START SERVER (RENDER FIX) =====
 const PORT = process.env.PORT || 3000;
+console.log("BOOT: about to listen");
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
