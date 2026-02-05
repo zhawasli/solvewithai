@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MathTutor AI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="nav">
+    <div class="nav__inner">
+      <div class="brand">
+        <div class="brand__logo">∑</div>
+        <span class="brand__name">MathTutor AI</span>
+      </div>
+      <button class="btn btn--ghost" id="signInBtn">Sign in</button>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero__right card">
+
+        <div class="card__header">
+          <div>
+            <div class="card__title">Ask a question</div>
+            <div class="card__subtitle">Type a problem, or upload/take a photo.</div>
+          </div>
+
+          <select id="level" class="select">
+            <option value="elementary">Elementary</option>
+            <option value="middle" selected>Middle School</option>
+            <option value="high">High School</option>
+          </select>
+        </div>
+
+        <textarea id="question" class="textarea textarea--wide" placeholder="Type or paste any math problem here…"></textarea>
+
+        <!-- ✅ UPLOAD + CAMERA ROW -->
+        <div class="uploadRow">
+          <input id="fileInput" type="file" accept="image/*,.pdf" hidden />
+          <button class="btn btn--secondary" id="uploadBtn" type="button">Upload file/photo</button>
+          <button class="btn btn--secondary" id="cameraBtn" type="button">Take photo</button>
+          <button class="btn btn--secondary" id="removeFileBtn" type="button" style="display:none;">Remove</button>
+        </div>
+
+        <div id="previewWrap" class="preview" style="display:none;">
+          <div class="preview__label">Attached</div>
+          <img id="previewImg" alt="Preview" style="display:none;" />
+          <div id="previewName" class="preview__name"></div>
+        </div>
+
+        <!-- Camera modal -->
+        <div id="cameraModal" class="modal" style="display:none;">
+          <div class="modal__inner">
+            <div class="modal__header">
+              <div class="modal__title">Take a photo</div>
+              <button id="closeCameraBtn" class="btn btn--secondary" type="button">Close</button>
+            </div>
+            <video id="cameraVideo" autoplay playsinline class="cameraVideo"></video>
+            <div class="modal__actions">
+              <button id="snapBtn" class="btn btn--primary" type="button">Capture</button>
+            </div>
+            <canvas id="cameraCanvas" style="display:none;"></canvas>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn--primary" id="solveBtn">Solve</button>
+          <button class="btn btn--secondary" id="clearBtn">Clear</button>
+        </div>
+
+        <div class="result">
+          <div class="result__title">Result</div>
+          <div id="answer" class="result__box">Your answer will appear here.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="year"></span> MathTutor AI</div>
+    </footer>
+  </main>
+
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
